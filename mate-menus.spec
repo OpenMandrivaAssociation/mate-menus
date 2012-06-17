@@ -7,7 +7,7 @@
 Summary:	MATE menu library
 Name:		mate-menus
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://mate-desktop.org
@@ -68,7 +68,8 @@ This package contains the development libraries of %{name}.
 %build
 NOCONFIGURE=yes ./autogen.sh
 %configure2_5x \
-	--disable-static
+	--disable-static \
+	--enable-python
 
 %make
 
@@ -77,9 +78,6 @@ NOCONFIGURE=yes ./autogen.sh
 find %{buildroot} -name *.la | xargs rm
 
 %find_lang %{name}
-
-mkdir -p %{buildroot}%{_sysconfdir}/xdg/mate
-mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate
 
 %files -f %{name}.lang
 %doc README NEWS AUTHORS ChangeLog
@@ -92,7 +90,8 @@ mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate
 %{_datadir}/%{name}
 
 %files -n python-%{name}
-%{_libdir}/python*/site-packages/matemenu.so
+%{python_sitearch}/matemenu.so
+#{python_sitearch}/MateMenuSimpleEditor/*
 
 %files -n %{libname}
 %{_libdir}/libmate-menu.so.%{major}*
