@@ -81,12 +81,10 @@ find %{buildroot} -name *.la | xargs rm
 
 %files -f %{name}.lang
 %doc README NEWS AUTHORS ChangeLog
+%config(noreplace) %{_sysconfdir}/xdg/menus/*
 %dir %{_datadir}/mate
 %dir %{_datadir}/mate/desktop-directories
 %{_datadir}/mate/desktop-directories/*
-%dir %{_sysconfdir}/xdg/mate
-%dir %{_sysconfdir}/xdg/mate/menus
-%config(noreplace) %{_sysconfdir}/xdg/mate/menus/*
 %{_datadir}/%{name}
 
 %files -n python-%{name}
