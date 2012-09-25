@@ -6,8 +6,8 @@
 
 Summary:	MATE menu library
 Name:		mate-menus
-Version:	1.2.0
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://mate-desktop.org
@@ -56,7 +56,7 @@ Group:		Development/C
 Summary:	MATE menu library development files
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{girname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{develname}
 This package contains the development libraries of %{name}.
