@@ -7,7 +7,7 @@
 Summary:	MATE menu library
 Name:		mate-menus
 Version:	1.4.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://mate-desktop.org
@@ -19,7 +19,7 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(python)
 
-Requires:	python-%{name}
+#Requires:	python-%{name}
 
 %description
 The package contains an implementation of the draft "Desktop Menu
@@ -76,12 +76,14 @@ NOCONFIGURE=yes ./autogen.sh
 %install
 %makeinstall_std
 find %{buildroot} -name *.la | xargs rm
+install -d %{buildroot}%_sysconfdir/xdg/mate
+mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate/
 
 %find_lang %{name}
 
 %files -f %{name}.lang
 %doc README NEWS AUTHORS ChangeLog
-%config(noreplace) %{_sysconfdir}/xdg/menus/*
+%config(noreplace) %{_sysconfdir}/xdg/mate
 %dir %{_datadir}/mate
 %dir %{_datadir}/mate/desktop-directories
 %{_datadir}/mate/desktop-directories/*
