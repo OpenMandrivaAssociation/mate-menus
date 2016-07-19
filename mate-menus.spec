@@ -8,8 +8,8 @@
 
 Summary:	MATE menu library
 Name:		mate-menus
-Version:	1.8.0
-Release:	2
+Version:	1.14.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://mate-desktop.org
@@ -19,7 +19,7 @@ BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 
 %description
 The package contains an implementation of the draft "Desktop Menu
@@ -67,8 +67,11 @@ This package contains the development libraries of %{name}.
 NOCONFIGURE=yes ./autogen.sh
 
 %build
+export PYTHON=python2
+
 %configure2_5x \
 	--disable-static \
+	--with-gtk=3.0 \
 	--enable-python
 
 %make
@@ -89,7 +92,7 @@ mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate/
 %{_datadir}/%{name}
 
 %files -n python-%{name}
-%{python_sitearch}/matemenu.so
+%{python2_sitearch}/matemenu.so
 
 %files -n %{libname}
 %{_libdir}/libmate-menu.so.%{major}*
