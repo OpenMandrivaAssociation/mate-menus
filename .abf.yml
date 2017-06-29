@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   mate-menus-1.14.0.tar.xz: e626d775635e39cbacc13db6235a1ab0c0288f5a
+sources:
+  mate-menus-1.18.0.tar.xz: c21b23b8cb2899de1a50d9bf50ca17a2148ba3fb
