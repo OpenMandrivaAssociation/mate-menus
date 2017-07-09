@@ -21,6 +21,8 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(python-2.7)
 
+Requires:	%{libname} = %{version}-%{release}
+
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
 intuitive and attractive desktop environment using traditional metaphors for
@@ -60,6 +62,7 @@ This package contains the shared libraries used by %{name}.
 %package -n %{girname}
 Summary:	GObject Introspection interface library for %{name}
 Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{girname}
 This package contains GObject Introspection interface library for %{name}.
