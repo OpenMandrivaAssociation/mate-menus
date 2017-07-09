@@ -18,6 +18,7 @@ Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar
 
 BuildRequires:	intltool
 BuildRequires:	mate-common
+BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(python-2.7)
