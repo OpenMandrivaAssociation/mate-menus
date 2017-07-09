@@ -1,10 +1,11 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define gimajor	2.0
 %define major	2
 %define libname	%mklibname mate-menu %{major}
-%define girname	%mklibname matemenu-gir %{gimajor}
 %define devname	%mklibname -d mate-menu
+
+%define gimajor	2.0
+%define girname	%mklibname matemenu-gir %{gimajor}
 
 Summary:	MATE menu library
 Name:		mate-menus
