@@ -5,7 +5,7 @@
 %define devname	%mklibname -d mate-menu
 
 %define gimajor	2.0
-%define girname	%mklibname matemenu-gir %{gimajor}
+%define girname	%mklibname mate-menu-gir %{gimajor}
 
 Summary:	MATE menu library
 Name:		mate-menus
