@@ -9,7 +9,7 @@
 
 Summary:	MATE menu library
 Name:		mate-menus
-Version:	1.20.0
+Version:	1.20.2
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
