@@ -108,7 +108,7 @@ This package contains Python2 module to access XDG menu for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 export PYTHON=%{__python2}
@@ -118,10 +118,10 @@ export PYTHON=%{__python2}
 	--enable-python \
 	--enable-introspection=yes \
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 install -d %{buildroot}%{_sysconfdir}/xdg/mate
 mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate/
