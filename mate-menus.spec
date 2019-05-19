@@ -21,7 +21,6 @@ BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(python-2.7)
 
 Requires:	%{libname} = %{version}-%{release}
 
@@ -93,29 +92,13 @@ based on %{name}.
 
 #---------------------------------------------------------------------------
 
-%package -n python2-%{name}
-Group:		Development/Python
-Summary:	Module to access XDG menu
-Requires:	python2-gobject
-
-%description -n python2-%{name}
-This package contains Python2 module to access XDG menu for %{name}.
-
-%files -n python2-%{name}
-%{python2_sitearch}/matemenu.so
-
-#---------------------------------------------------------------------------
-
 %prep
 %setup -q
 %autopatch -p1
 
 %build
-export PYTHON=%{__python2}
-
 #NOCONFIGURE=yes ./autogen.sh
 %configure \
-	--enable-python \
 	--enable-introspection=yes \
 	%{nil}
 %make_build
@@ -128,4 +111,3 @@ mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate/
 
 # locales
 %find_lang %{name} --with-gnome --all-name
-
