@@ -9,14 +9,13 @@
 
 Summary:	MATE menu library
 Name:		mate-menus
-Version:	1.26.0
-Release:	3
+Version:	1.26.1
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-Patch1:		mate-menus_0001-Let-user-disable-collection-menu-entry-disable-colle.patch
-Patch2:		mate-menus_0002-fix-build-error-invalid-operands-to-binary-expressio.patch
+
 BuildRequires:	autoconf-archive
 BuildRequires:	intltool
 BuildRequires:	mate-common
