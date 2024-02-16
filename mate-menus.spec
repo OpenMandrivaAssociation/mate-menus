@@ -1,20 +1,21 @@
-%define url_ver %(echo %{version}|cut -d. -f1,2)
+%define mate_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define major 2
-%define libname %mklibname mate-menu %{major}
-%define devname %mklibname -d mate-menu
+%define libname %mklibname mate-menu
+%define devname %mklibname mate-menu -d
+%define oldlibname %mklibname mate-menu 2
 
 %define gimajor 2.0
 %define girname %mklibname mate-menu-gir %{gimajor}
 
 Summary:	MATE menu library
 Name:		mate-menus
-Version:	1.26.1
+Version:	1.28.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://mate-desktop.org
-Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf-archive
 BuildRequires:	intltool
@@ -52,6 +53,7 @@ from freedesktop.org.
 %package -n %{libname}
 Summary:	MATE menu library
 Group:		System/Libraries
+Obsoletes:	%{libname} <= %{EVRD}
 
 %description -n %{libname}
 This package contains the shared libraries used by %{name}.
