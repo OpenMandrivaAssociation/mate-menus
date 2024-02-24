@@ -99,7 +99,7 @@ based on %{name}.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
+#NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-introspection=yes \
 	--disable-collection
