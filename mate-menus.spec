@@ -19,7 +19,13 @@ Url:		https://mate-desktop.org
 # Use for now tarball from GitHub because from few months sources at mate-desktop.org was not updated.
 Source0:	https://github.com/mate-desktop/mate-menus/releases/download/v%{version}/mate-menus-%{version}.tar.xz
 
-BuildRequires:	meson
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
+BuildRequires:	autoconf-archive
+BuildRequires:	intltool
+BuildRequires:	mate-common
 BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gio-2.0)
@@ -101,14 +107,15 @@ based on %{name}.
 %autosetup -p1
 
 %build
-%meson	\
-	-Dintrospection=true \
-	-Dcollection=true
+#NOCONFIGURE=1 ./autogen.sh
+%configure \
+	--enable-introspection=yes \
+	--disable-collection
 
-%meson_build
+%make_build
 
 %install
-%meson_install
+%make_install
 
 install -d %{buildroot}%{_sysconfdir}/xdg/mate
 mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate/
