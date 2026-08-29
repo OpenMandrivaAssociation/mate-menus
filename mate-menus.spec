@@ -10,18 +10,16 @@
 
 Summary:	MATE menu library
 Name:		mate-menus
-Version:	1.28.0
+Version:	1.28.1
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://mate-desktop.org
-Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
+#Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
+# Use for now tarball from GitHub because from few months sources at mate-desktop.org was not updated.
+Source0:	https://github.com/mate-desktop/mate-menus/releases/download/v%{version}/mate-menus-%{version}.tar.xz
 
-BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	slibtool
-BuildRequires:	make
-BuildRequires:	autoconf-archive
+BuildRequires:	meson
 BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(gio-2.0)
@@ -103,15 +101,14 @@ based on %{name}.
 %autosetup -p1
 
 %build
-#NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--enable-introspection=yes \
-	--disable-collection
+%meson	\
+	-Dintrospection=true \
+	-Dcollection=true
 
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 install -d %{buildroot}%{_sysconfdir}/xdg/mate
 mv %{buildroot}%{_sysconfdir}/xdg/menus %{buildroot}%{_sysconfdir}/xdg/mate/
